@@ -14,21 +14,12 @@ android {
 		
 		testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 		consumerProguardFiles("consumer-rules.pro")
+		
 		// The schemas directory contains a schema file for each version of the Room database.
 		// This is required to enable Room auto migrations.
 		// See https://developer.android.com/reference/kotlin/androidx/room/AutoMigration.
 		ksp {
 			arg("room.schemaLocation", "$projectDir/schemas")
-		}
-	}
-	
-	buildTypes {
-		release {
-			isMinifyEnabled = false
-			proguardFiles(
-				getDefaultProguardFile("proguard-android-optimize.txt"),
-				"proguard-rules.pro"
-			)
 		}
 	}
 	buildFeatures {
@@ -53,4 +44,6 @@ dependencies {
 	ksp(libs.androidx.room.compiler)
 	implementation(libs.hilt.android)
 	kapt(libs.hilt.compiler)
+	//Test
+	implementation(project(":core-test"))
 }

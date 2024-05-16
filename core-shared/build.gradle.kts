@@ -14,15 +14,11 @@ android {
 		testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 		consumerProguardFiles("consumer-rules.pro")
 	}
-	
-	buildTypes {
-		release {
-			isMinifyEnabled = false
-			proguardFiles(
-				getDefaultProguardFile("proguard-android-optimize.txt"),
-				"proguard-rules.pro"
-			)
-		}
+	buildFeatures {
+		aidl = false
+		buildConfig = false
+		renderScript = false
+		shaders = false
 	}
 	compileOptions {
 		sourceCompatibility = JavaVersion.VERSION_17
@@ -37,10 +33,9 @@ dependencies {
 	// Arch Components
 	implementation(libs.hilt.android)
 	kapt(libs.hilt.compiler)
+	// Local Test
+	implementation(project(":core-test"))
 	
 	implementation(libs.kotlinx.coroutines.android)
 	
-	// Local tests: jUnit, coroutines, Android runner
-	testImplementation(libs.junit)
-	testImplementation(libs.kotlinx.coroutines.test)
 }

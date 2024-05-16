@@ -1,4 +1,4 @@
-package io.rakuten.arch.template.ui.theme
+package io.rakuten.arch.core_ui.theme
 
 import android.app.Activity
 import android.os.Build

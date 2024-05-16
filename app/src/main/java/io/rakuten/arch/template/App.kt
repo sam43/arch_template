@@ -1,4 +1,4 @@
-package io.rakuten.arch.template.ui
+package io.rakuten.arch.template
 
 import android.app.Application
 

@@ -75,7 +75,10 @@ dependencies {
 	implementation(libs.androidx.lifecycle.viewmodel.compose)
 	implementation(libs.androidx.navigation.compose)
 	implementation(libs.androidx.hilt.navigation.compose)
-	
+	// UI module
+	implementation(project(":core-ui"))
+	// Testing
+	implementation(project(":core-test"))
 	// Compose
 	val composeBom = platform(libs.androidx.compose.bom)
 	implementation(composeBom)

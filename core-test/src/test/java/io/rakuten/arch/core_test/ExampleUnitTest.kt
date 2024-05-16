@@ -1,4 +1,4 @@
-package io.rakuten.arch.core
+package io.rakuten.arch.core_test
 
 import org.junit.Test
 
