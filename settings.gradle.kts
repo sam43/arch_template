@@ -15,8 +15,3 @@ dependencyResolutionManagement {
 
 rootProject.name = "Architecture Template"
 include(":app")
-include(":core")
-include(":core-db")
-include(":core-shared")
-include(":core-ui")
-include(":core-test")
