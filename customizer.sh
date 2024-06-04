@@ -63,8 +63,8 @@ find ./ -name "mymodel" -type d  | sed "p;s/mymodel/${DATAMODEL,,}/" |  tr '\n' 
 if [[ $APPNAME ]]
 then
     echo "Renaming app to $APPNAME"
-    find ./ -type f \( -name "MyApplication.kt" -or -name "settings.gradle.kts" -or -name "*.xml" \) -exec sed -i.bak "s/MyApplication/$APPNAME/g" {} \;
-    find ./ -name "MyApplication.kt" | sed "p;s/MyApplication/$APPNAME/" | tr '\n' '\0' | xargs -0 -n 2 mv
+    find ./ -type f \( -name "App.kt" -or -name "settings.gradle.kts" -or -name "*.xml" \) -exec sed -i.bak "s/App/$APPNAME/g" {} \;
+    find ./ -name "App.kt" | sed "p;s/App/$APPNAME/" | tr '\n' '\0' | xargs -0 -n 2 mv
     find . -name "*.bak" -type f -delete
 fi
 
