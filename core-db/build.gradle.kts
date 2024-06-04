@@ -6,13 +6,13 @@ plugins {
 }
 
 android {
-	namespace = "io.rakuten.arch.core_db"
+	namespace = "android.template.core.db"
 	compileSdk = 34
 	
 	defaultConfig {
 		minSdk = 21
 		
-		testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+		testInstrumentationRunner = "android.template.core.testing.HiltTestRunner"
 		consumerProguardFiles("consumer-rules.pro")
 		
 		// The schemas directory contains a schema file for each version of the Room database.
@@ -22,16 +22,19 @@ android {
 			arg("room.schemaLocation", "$projectDir/schemas")
 		}
 	}
+	
 	buildFeatures {
 		aidl = false
 		buildConfig = false
 		renderScript = false
 		shaders = false
 	}
+	
 	compileOptions {
 		sourceCompatibility = JavaVersion.VERSION_17
 		targetCompatibility = JavaVersion.VERSION_17
 	}
+	
 	kotlinOptions {
 		jvmTarget = "17"
 	}
@@ -44,6 +47,4 @@ dependencies {
 	ksp(libs.androidx.room.compiler)
 	implementation(libs.hilt.android)
 	kapt(libs.hilt.compiler)
-	//Test
-	implementation(project(":core-test"))
 }

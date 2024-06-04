@@ -5,21 +5,22 @@ plugins {
 	alias(libs.plugins.ksp)
 	alias(libs.plugins.kotlin.kapt)
 }
+
 android {
-	namespace = "io.rakuten.arch.template"
+	namespace = "android.template"
 	compileSdk = 34
 	
 	defaultConfig {
-		applicationId = "io.rakuten.arch.template"
+		applicationId = "android.template"
 		minSdk = 21
 		targetSdk = 34
 		versionCode = 1
 		versionName = "1.0"
 		
-		testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 		vectorDrawables {
 			useSupportLibrary = true
 		}
+		
 		// Enable room auto-migrations
 		ksp {
 			arg("room.schemaLocation", "$projectDir/schemas")
@@ -27,20 +28,21 @@ android {
 	}
 	
 	buildTypes {
-		release {
+		getByName("release") {
 			isMinifyEnabled = false
-			proguardFiles(
-				getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
-			)
+			proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
 		}
 	}
+	
 	compileOptions {
 		sourceCompatibility = JavaVersion.VERSION_17
 		targetCompatibility = JavaVersion.VERSION_17
 	}
+	
 	kotlinOptions {
 		jvmTarget = "17"
 	}
+	
 	buildFeatures {
 		compose = true
 		aidl = false
@@ -48,10 +50,9 @@ android {
 		renderScript = false
 		shaders = false
 	}
+	
 	composeOptions {
 		kotlinCompilerExtensionVersion = libs.versions.androidxComposeCompiler.get()
-		// NOTE:: `composeOptions` won't be needed from kotlin 2.0 and new gradle system; update it when needed
-		// ref: https://android-developers.googleblog.com/2024/04/jetpack-compose-compiler-moving-to-kotlin-repository.html
 	}
 	packaging {
 		resources {
@@ -61,6 +62,8 @@ android {
 }
 
 dependencies {
+	implementation(project(":core-ui"))
+	
 	// Core Android dependencies
 	implementation(libs.androidx.core.ktx)
 	implementation(libs.androidx.lifecycle.runtime.ktx)
@@ -75,10 +78,7 @@ dependencies {
 	implementation(libs.androidx.lifecycle.viewmodel.compose)
 	implementation(libs.androidx.navigation.compose)
 	implementation(libs.androidx.hilt.navigation.compose)
-	// UI module
-	implementation(project(":core-ui"))
-	// Testing
-	implementation(project(":core-test"))
+	
 	// Compose
 	val composeBom = platform(libs.androidx.compose.bom)
 	implementation(composeBom)
@@ -88,4 +88,8 @@ dependencies {
 	
 	// Tooling
 	debugImplementation(libs.androidx.compose.ui.tooling)
+	
+	// Local tests: jUnit, coroutines, Android runner
+	testImplementation(libs.junit)
+	testImplementation(libs.kotlinx.coroutines.test)
 }

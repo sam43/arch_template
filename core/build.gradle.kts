@@ -5,13 +5,13 @@ plugins {
 }
 
 android {
-	namespace = "android.template.core.data"
+	namespace = "android.template.core"
 	compileSdk = 34
 	
 	defaultConfig {
 		minSdk = 21
 		
-		testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+		testInstrumentationRunner = "android.template.core.testing.HiltTestRunner"
 		consumerProguardFiles("consumer-rules.pro")
 	}
 	
@@ -34,7 +34,6 @@ android {
 
 dependencies {
 	implementation(project(":core-db"))
-	implementation(project(":core-shared"))
 	
 	// Arch Components
 	implementation(libs.hilt.android)

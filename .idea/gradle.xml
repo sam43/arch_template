@@ -13,7 +13,6 @@
             <option value="$PROJECT_DIR$/core" />
             <option value="$PROJECT_DIR$/core-db" />
             <option value="$PROJECT_DIR$/core-shared" />
-            <option value="$PROJECT_DIR$/core-test" />
             <option value="$PROJECT_DIR$/core-ui" />
           </set>
         </option>

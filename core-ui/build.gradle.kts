@@ -3,7 +3,7 @@ plugins {
 	alias(libs.plugins.kotlin.android)
 }
 android {
-	namespace = "io.rakuten.arch.core_ui"
+	namespace = "android.template.core.ui"
 	compileSdk = 34
 	
 	defaultConfig {
@@ -23,9 +23,8 @@ android {
 	
 	composeOptions {
 		kotlinCompilerExtensionVersion = libs.versions.androidxComposeCompiler.get()
-		// NOTE:: `composeOptions` won't be needed from kotlin 2.0 and new gradle system; update it when needed
-		// ref: https://android-developers.googleblog.com/2024/04/jetpack-compose-compiler-moving-to-kotlin-repository.html
 	}
+	
 	compileOptions {
 		sourceCompatibility = JavaVersion.VERSION_17
 		targetCompatibility = JavaVersion.VERSION_17
@@ -49,8 +48,4 @@ dependencies {
 	implementation(libs.androidx.compose.material3)
 	// Tooling
 	debugImplementation(libs.androidx.compose.ui.tooling)
-	// Test
-	testImplementation(libs.junit)
-	androidTestImplementation(libs.androidx.test.ext.junit)
-	androidTestImplementation(libs.espresso.core)
 }
