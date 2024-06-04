@@ -1,6 +1,7 @@
 package android.template.ui.components
 
 import android.os.Bundle
+import android.template.ui.theme.MyApplicationTheme
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
@@ -10,13 +11,12 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import android.template.core_ui.theme.ArchitectureTemplateTheme
 
 class MainActivity : ComponentActivity() {
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
 		setContent {
-			ArchitectureTemplateTheme {
+			MyApplicationTheme {
 				// A surface container using the 'background' color from the theme
 				Surface(
 					modifier = Modifier.fillMaxSize(),
@@ -40,7 +40,7 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
-	ArchitectureTemplateTheme {
+	MyApplicationTheme {
 		Greeting("Android")
 	}
 }
