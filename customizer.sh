@@ -24,18 +24,18 @@ do
   echo "Creating $n/java/$SUBDIR"
   mkdir -p $n/java/$SUBDIR
   echo "Moving files to $n/java/$SUBDIR"
-  mv $n/java/io/rakuten/arch/* $n/java/$SUBDIR
-  echo "Removing old $n/java/io/rakuten/arch"
-  rm -rf mv $n/java/io
+  mv $n/java/android/template/* $n/java/$SUBDIR
+  echo "Removing old $n/java/android/template"
+  rm -rf mv $n/java/android
 done
 
 # Rename package and imports
 echo "Renaming packages to $PACKAGE"
-find ./ -type f -name "*.kt" -exec sed -i.bak "s/package io.rakuten.arch/package $PACKAGE/g" {} \;
-find ./ -type f -name "*.kt" -exec sed -i.bak "s/import io.rakuten.arch/import $PACKAGE/g" {} \;
+find ./ -type f -name "*.kt" -exec sed -i.bak "s/package android.template/package $PACKAGE/g" {} \;
+find ./ -type f -name "*.kt" -exec sed -i.bak "s/import android.template/import $PACKAGE/g" {} \;
 
 # Gradle files
-find ./ -type f -name "*.kts" -exec sed -i.bak "s/io.rakuten.arch/$PACKAGE/g" {} \;
+find ./ -type f -name "*.kts" -exec sed -i.bak "s/android.template/$PACKAGE/g" {} \;
 
 # Rename model
 echo "Renaming model to $DATAMODEL"
@@ -63,8 +63,8 @@ find ./ -name "mymodel" -type d  | sed "p;s/mymodel/${DATAMODEL,,}/" |  tr '\n' 
 if [[ $APPNAME ]]
 then
     echo "Renaming app to $APPNAME"
-    find ./ -type f \( -name "App.kt" -or -name "settings.gradle.kts" -or -name "*.xml" \) -exec sed -i.bak "s/App/$APPNAME/g" {} \;
-    find ./ -name "App.kt" | sed "p;s/App/$APPNAME/" | tr '\n' '\0' | xargs -0 -n 2 mv
+    find ./ -type f \( -name "MyApplication.kt" -or -name "settings.gradle.kts" -or -name "*.xml" \) -exec sed -i.bak "s/MyApplication/$APPNAME/g" {} \;
+    find ./ -name "MyApplication.kt" | sed "p;s/MyApplication/$APPNAME/" | tr '\n' '\0' | xargs -0 -n 2 mv
     find . -name "*.bak" -type f -delete
 fi
 

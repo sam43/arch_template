@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-	namespace = "io.rakuten.arch.shared"
+	namespace = "android.template.shared"
 	compileSdk = 34
 	
 	defaultConfig {
@@ -33,8 +33,10 @@ dependencies {
 	// Arch Components
 	implementation(libs.hilt.android)
 	kapt(libs.hilt.compiler)
-	// Local Test
-	implementation(project(":core-test"))
+	
+	// Local tests: jUnit, coroutines, Android runner
+	testImplementation(libs.junit)
+	testImplementation(libs.kotlinx.coroutines.test)
 	
 	implementation(libs.kotlinx.coroutines.android)
 	

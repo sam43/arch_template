@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-	namespace = "io.rakuten.arch.core_test"
+	namespace = "android.template.core.test"
 	compileSdk = 34
 	
 	defaultConfig {
@@ -14,12 +14,14 @@ android {
 		testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 		consumerProguardFiles("consumer-rules.pro")
 	}
+	
 	buildFeatures {
 		aidl = false
 		buildConfig = false
 		renderScript = false
 		shaders = false
 	}
+	
 	compileOptions {
 		sourceCompatibility = JavaVersion.VERSION_17
 		targetCompatibility = JavaVersion.VERSION_17
@@ -32,10 +34,4 @@ android {
 dependencies {
 	implementation(libs.androidx.test.runner)
 	implementation(libs.hilt.android.testing)
-	// Local tests: jUnit, coroutines, Android runner
-	testImplementation(libs.junit)
-	testImplementation(libs.kotlinx.coroutines.test)
-	// UI and Instrumentation testing
-	androidTestImplementation(libs.androidx.test.core)
-	androidTestImplementation(libs.espresso.core)
 }
