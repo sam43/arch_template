@@ -15,6 +15,7 @@
 
 ### Base:
 
+```
 arch-template-folder
     |___app (module)
         |___domain 	 
@@ -40,11 +41,13 @@ arch-template-folder
         |___ libs.version.toml
     |___feature_1 		     
         |___ feature_model... 		     
-    |___[Other Feature modules] 
+    |___[Other Feature modules]
+```
 
 
 ### Modularized: 
 
+```
 arch-template-folder	
     |___app (module)		     
         |___navigation		     
@@ -76,7 +79,8 @@ arch-template-folder
         |___ libs.version.toml
     |___app_feature_1		     
         |___ feature_model... 		     
-    |___[Other Feature modules] 
+    |___[Other Feature modules]
+```
 
 
 ## Usage
@@ -97,7 +101,7 @@ git clone https://github.com/sam43/arch_template.git --branch arch/modularized
 ```
 ./customizer.sh your.package.name DataItemType [MyApplication]
 ```
-For example: ```./customizer.sh com.rakuten.rplay PlayData PlayApp``` 
+For example: ```./customizer.sh com.company.play PlayData PlayApp``` 
 
 Where `your.package.name` is your app ID (should be lowercase) and `DataItemType` is used for the
-name of the screen, exposed state and data base entity (should be PascalCase). You can add an optional application name.
+name of the screen, exposed state and data base entity (should be PascalCase/CamelCase). You can add an optional application name.
