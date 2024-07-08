@@ -99,9 +99,10 @@ git clone https://github.com/sam43/arch_template.git --branch arch/modularized
 2. Run the customizer script:
 
 ```
-./customizer.sh your.package.name DataItemType [MyApplication]
+// Depends upon OS command see [how to install bash using homebrew](https://formulae.brew.sh/formula/bash) & see [how to install bash for windows](https://hackernoon.com/how-to-install-bash-on-windows-10-lqb73yj3)
+bash ./customizer.sh your.package.name DataItemType [MyApplication] //optional
 ```
-For example: ```./customizer.sh com.company.play PlayData PlayApp``` 
+For example: ```bash ./customizer.sh com.company.play PlayData PlayApp``` 
 
 Where `your.package.name` is your app ID (should be lowercase) and `DataItemType` is used for the
 name of the screen, exposed state and data base entity (should be PascalCase/CamelCase). You can add an optional application name.
