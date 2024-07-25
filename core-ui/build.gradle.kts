@@ -1,6 +1,8 @@
 plugins {
 	alias(libs.plugins.android.library)
 	alias(libs.plugins.kotlin.android)
+	alias(libs.plugins.ksp)
+	alias(libs.plugins.kotlin.android.compose)
 }
 android {
 	namespace = "android.template.core.ui"
@@ -8,7 +10,6 @@ android {
 	
 	defaultConfig {
 		minSdk = 21
-		
 		testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 		consumerProguardFiles("consumer-rules.pro")
 	}
@@ -19,10 +20,6 @@ android {
 		buildConfig = false
 		renderScript = false
 		shaders = false
-	}
-	
-	composeOptions {
-		kotlinCompilerExtensionVersion = libs.versions.androidxComposeCompiler.get()
 	}
 	
 	compileOptions {
