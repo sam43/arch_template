@@ -1,12 +1,10 @@
 plugins {
 	alias(libs.plugins.android.application)
 	alias(libs.plugins.kotlin.android)
+	alias(libs.plugins.kotlin.android.compose)
 	alias(libs.plugins.hilt.gradle)
 	alias(libs.plugins.ksp)
-	alias(libs.plugins.kotlin.kapt)
 	alias(libs.plugins.kotlin.serialization)
-//	kotlin("jvm") version "2.0.0"
-//	kotlin("plugin.serialization") version "2.0.0"
 }
 
 android {
@@ -54,9 +52,6 @@ android {
 		shaders = false
 	}
 	
-	composeOptions {
-		kotlinCompilerExtensionVersion = libs.versions.androidxComposeCompiler.get()
-	}
 	packaging {
 		resources {
 			excludes += "/META-INF/{AL2.0,LGPL2.1}"
@@ -74,7 +69,7 @@ dependencies {
 	
 	// Hilt Dependency Injection
 	implementation(libs.hilt.android)
-	kapt(libs.hilt.compiler)
+	ksp(libs.hilt.compiler)
 	
 	// Arch Components
 	implementation(libs.androidx.lifecycle.runtime.compose)

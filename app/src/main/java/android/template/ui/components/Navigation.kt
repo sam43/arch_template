@@ -2,10 +2,14 @@ package android.template.ui.components
 
 import android.template.core_ui.theme.ArchitectureTemplateTheme
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavController
@@ -36,8 +40,6 @@ fun MainNavigation() {
 			MoreScreen(modifier = Modifier, navController = navController, payLoad = data)
 		}
 	}
-	
-	// NOTE:: to navigate to other composable inside NavHost, use: navController.navigate(Screen.Profile("Rakuten Taro"))
 }
 
 @Composable
@@ -46,6 +48,7 @@ fun ProfileScreen(modifier: Modifier, navController: NavController, userName: St
 	Text(
 		text = "Hello $userName!",
 		modifier = modifier
+			.wrapContentSize(align = Alignment.Center)
 			.clickable { navController.navigate(Screen.More(moreData)) }
 	)
 }
@@ -54,6 +57,7 @@ fun MoreScreen(modifier: Modifier, navController: NavController, payLoad: List<S
 	Text(
 		text = "Hello from More Screen!",
 		modifier = modifier
+			.wrapContentSize(align = Alignment.Center)
 			.clickable { navController.navigate(Screen.Profile(payLoad[0])) }
 	)
 }
@@ -68,15 +72,17 @@ sealed interface Screen {
 
 @Composable
 fun Greeting(name: String, modifier: Modifier = Modifier, navController: NavController) {
-	Column(modifier = modifier) {
-		Text(
-			text = "Hello $name!",
-			modifier = modifier
-		)
-		Button(onClick = { navController.navigate(Screen.Profile("Rakuten")) }) {
+	Box(modifier = modifier.fillMaxSize(), contentAlignment = Alignment.Center){
+		Column(modifier = modifier.wrapContentSize(align = Alignment.Center)) {
 			Text(
-				text = "Profile"
+				text = "Hello $name!",
+				modifier = modifier
 			)
+			Button(onClick = { navController.navigate(Screen.Profile("Rakuten")) }) {
+				Text(
+					text = "Profile"
+				)
+			}
 		}
 	}
 }

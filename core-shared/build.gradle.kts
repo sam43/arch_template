@@ -1,7 +1,7 @@
 plugins {
 	alias(libs.plugins.android.library)
 	alias(libs.plugins.kotlin.android)
-	alias(libs.plugins.kotlin.kapt)
+	alias(libs.plugins.ksp)
 }
 
 android {
@@ -10,7 +10,6 @@ android {
 	
 	defaultConfig {
 		minSdk = 21
-		
 		testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 		consumerProguardFiles("consumer-rules.pro")
 	}
@@ -32,7 +31,7 @@ android {
 dependencies {
 	// Arch Components
 	implementation(libs.hilt.android)
-	kapt(libs.hilt.compiler)
+	ksp(libs.hilt.compiler)
 	
 	// Local tests: jUnit, coroutines, Android runner
 	testImplementation(libs.junit)
