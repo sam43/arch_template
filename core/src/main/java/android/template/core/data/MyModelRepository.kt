@@ -1,4 +1,4 @@
-package android.template.core
+package android.template.core.data
 
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map

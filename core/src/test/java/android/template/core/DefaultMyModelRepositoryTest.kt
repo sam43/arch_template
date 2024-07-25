@@ -1,5 +1,6 @@
 package android.template.core
 
+import android.template.core.data.DefaultMyModelRepository
 import android.template.core_db.MyModel
 import android.template.core_db.MyModelDao
 import kotlinx.coroutines.flow.Flow

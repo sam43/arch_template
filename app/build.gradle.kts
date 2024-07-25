@@ -4,6 +4,9 @@ plugins {
 	alias(libs.plugins.hilt.gradle)
 	alias(libs.plugins.ksp)
 	alias(libs.plugins.kotlin.kapt)
+	alias(libs.plugins.kotlin.serialization)
+//	kotlin("jvm") version "2.0.0"
+//	kotlin("plugin.serialization") version "2.0.0"
 }
 
 android {
@@ -78,6 +81,7 @@ dependencies {
 	implementation(libs.androidx.lifecycle.viewmodel.compose)
 	implementation(libs.androidx.navigation.compose)
 	implementation(libs.androidx.hilt.navigation.compose)
+	implementation(libs.kotlinx.serialization)
 	
 	// Compose
 	val composeBom = platform(libs.androidx.compose.bom)

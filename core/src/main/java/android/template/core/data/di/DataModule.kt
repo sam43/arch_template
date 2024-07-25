@@ -1,4 +1,4 @@
-package android.template.core.di
+package android.template.core.data.di
 
 import dagger.Binds
 import dagger.Module
@@ -6,8 +6,8 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOf
-import android.template.core.MyModelRepository
-import android.template.core.DefaultMyModelRepository
+import android.template.core.data.MyModelRepository
+import android.template.core.data.DefaultMyModelRepository
 import javax.inject.Inject
 import javax.inject.Singleton
 
