@@ -1,3 +1,6 @@
+import java.io.FileInputStream
+import java.util.Properties
+
 plugins {
 	alias(libs.plugins.android.application)
 	alias(libs.plugins.kotlin.android)
@@ -9,12 +12,12 @@ plugins {
 
 android {
 	namespace = "android.template"
-	compileSdk = 34
+	compileSdk = libs.versions.compileSdk.get().toInt()
 	
 	defaultConfig {
 		applicationId = "android.template"
-		minSdk = 21
-		targetSdk = 34
+		minSdk = libs.versions.minSdk.get().toInt()
+		targetSdk = libs.versions.targetSdk.get().toInt()
 		versionCode = 1
 		versionName = "1.0"
 		
@@ -28,10 +31,33 @@ android {
 		}
 	}
 	
+//	TODO:: enable this after adding signingConfig.jks file and uncomment the signing config inside buildTypes { } as well
+//	signingConfigs {
+//		create("release") {
+//			val properties = Properties().apply {
+//				load(FileInputStream(File(rootProject.rootDir, "local.properties")))
+//			}
+//			val releaseKeyStorePath: String by project
+//
+//			storeFile = file(releaseKeyStorePath)
+//			storePassword = properties.getProperty("releaseStorePassword")
+//			keyAlias = properties.getProperty("releaseKeyAlias")
+//			keyPassword = properties.getProperty("releaseKeyPassword")
+//		}
+//	}
+	
 	buildTypes {
-		getByName("release") {
+		release {
+			isDebuggable = false
+			isMinifyEnabled = true
+			isShrinkResources = true
+			proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro", "retrofit2.pro")
+//			signingConfig = signingConfigs.getByName("release")
+		}
+		debug {
+			isDebuggable = true
 			isMinifyEnabled = false
-			proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+			isShrinkResources = false
 		}
 	}
 	
@@ -55,6 +81,37 @@ android {
 	packaging {
 		resources {
 			excludes += "/META-INF/{AL2.0,LGPL2.1}"
+		}
+	}
+	
+	flavorDimensions.addAll(listOf("env", "usertype"))
+	
+	productFlavors {
+		create("inspector") {
+			dimension = "usertype"
+		}
+		create("user") {
+			dimension = "usertype"
+		}
+		create("dev") {
+			dimension = "env"
+			applicationIdSuffix = ".dev"
+			resValue("string", "package_name", android.defaultConfig.applicationId + applicationIdSuffix as String)
+		}
+		create("stage") {
+			dimension = "env"
+			applicationIdSuffix = ".stage"
+			resValue("string", "package_name", android.defaultConfig.applicationId + applicationIdSuffix as String)
+		}
+		create("qa") {
+			dimension = "env"
+			applicationIdSuffix = ".qa"
+			resValue("string", "package_name", android.defaultConfig.applicationId + applicationIdSuffix as String)
+		}
+		create("prod") {
+			dimension = "env"
+			resValue("string", "package_name", android.defaultConfig.applicationId as String)
+			// todo:: to be added the firebaseDistribution functionalities for all variants
 		}
 	}
 }
