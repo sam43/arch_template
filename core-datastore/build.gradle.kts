@@ -10,8 +10,8 @@ android {
 	
 	defaultConfig {
 		minSdk = libs.versions.minSdk.get().toInt()
-		testInstrumentationRunner = "android.template.core.testing.HiltTestRunner"
-//		testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+//		testInstrumentationRunner = "android.template.core.testing.HiltTestRunner"
+		testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 		
 		consumerProguardFiles("consumer-rules.pro")
 	}
@@ -62,6 +62,7 @@ dependencies {
 	testImplementation(libs.androidx.test.core)
 	testImplementation(libs.androidx.test.ext.junit)
 	testImplementation(libs.androidx.test.runner)
+	testImplementation(libs.androidx.core.testing)
 	
 	// for androidTest
 	androidTestImplementation(libs.junit)
@@ -69,6 +70,7 @@ dependencies {
 	androidTestImplementation(libs.kotlinx.coroutines.test)
 	androidTestImplementation(libs.androidx.core.testing)
 	
+	testImplementation(libs.roboelectric)
 	androidTestImplementation(libs.roboelectric)
 	
 	// MockK for jUnit

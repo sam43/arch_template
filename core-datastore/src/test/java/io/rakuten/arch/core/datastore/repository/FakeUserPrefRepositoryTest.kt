@@ -2,37 +2,50 @@ package io.rakuten.arch.core.datastore.repository
 
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
-import androidx.datastore.preferences.core.edit
-import androidx.datastore.preferences.core.intPreferencesKey
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import androidx.test.filters.LargeTest
-import androidx.test.filters.SmallTest
 import io.rakuten.arch.core.datastore.DataStoreTest
-import io.rakuten.arch.core.datastore.readIntValueOf
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.test.runTest
+import org.junit.After
 import org.junit.Assert.assertEquals
+import org.junit.Before
+import org.junit.Rule
 import org.junit.Test
+import org.junit.rules.TemporaryFolder
 import org.junit.runner.RunWith
+import org.robolectric.RobolectricTestRunner
 
-@RunWith(AndroidJUnit4::class)
-@SmallTest
+@RunWith(RobolectricTestRunner::class)
 class UserPrefRepositoryTest: DataStoreTest() {
-	private val userPrefRepository: FakeUserPrefRepository = FakeUserPrefRepository(dataStore)
+	@get:Rule
+	val tmpFolder: TemporaryFolder = TemporaryFolder.builder().assureDeletion().build()
+	
+	private lateinit var userPrefRepository: FakeUserPrefRepository
 	private val expectedAge = 26
-
-	@Test
-	fun addition_isCorrect() = runTest {
-		assertEquals(4, 2 + 2)
+	
+	@Before
+	fun setup() {
+		super.createDatastore()
+		userPrefRepository = FakeUserPrefRepository(dataStore)
 	}
 	
 	@Test
-	fun write_to_shared_preference() = coTest {
-		// Make sure that setUserAge runs on the correct dispatcher
-		userPrefRepository.setUserAge(expectedAge)
-		assertEquals(expectedAge, userPrefRepository.getUserAge("user_age").first())
+	fun defaultPrefValue() = runTest {
+		val defaultAgeValue = 0
+		coTest {
+			assertEquals(defaultAgeValue, userPrefRepository.getUserAge("user_age").first())
+		}
+	}
+	
+	@Test
+	fun writeToAndReadFromSharedPref() = runTest {
+		coTest {
+			// Make sure that setUserAge runs on the correct dispatcher
+			userPrefRepository.setUserAge(expectedAge)
+			assertEquals(expectedAge, userPrefRepository.getUserAge("user_age").first())
+		}
 	}
 }
 
