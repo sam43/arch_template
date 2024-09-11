@@ -10,7 +10,6 @@ import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4ClassRunner::class)
 class MainViewModelTest {
-	private val expectedAge = 26
 	@Test
 	fun addition_isCorrect() = runTest {
 		assertEquals(4, 2 + 2)
