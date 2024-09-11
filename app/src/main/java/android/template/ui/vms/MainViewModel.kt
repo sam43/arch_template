@@ -4,7 +4,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.rakuten.arch.core.datastore.repository.IUserPrefRepository
-import io.rakuten.arch.core.datastore.repository.UserPrefRepository
 import io.rakuten.arch.core.datastore.utils.Constants
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
