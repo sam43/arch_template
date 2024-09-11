@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ArchitectureTemplate">
         <activity
-            android:name=".ui.components.MainActivity"
+            android:name=".ui.MainActivity"
             android:exported="true"
             android:theme="@style/Theme.ArchitectureTemplate">
             <intent-filter>

@@ -16,7 +16,7 @@ import javax.inject.Inject
 
 /**
  * This is a sample implementation class created for testing purpose
- * Let's call it "UserPrefRepository"
+ * Let's call it "UserPrefRepository"; we can implement the similar one in the client / app module
  * */
 interface IUserPrefRepository {
 	suspend fun setUserAge(age: Int)
@@ -29,7 +29,7 @@ interface IUserPrefRepository {
 	fun getUserAnnualExpense(key: String): Flow<Double>
 	
 }
-class UserPrefRepository @Inject constructor(private val dataStore: DataStore<Preferences>): IUserPrefRepository {
+open class UserPrefRepository @Inject constructor(private val dataStore: DataStore<Preferences>): IUserPrefRepository {
 	override suspend fun setUserAge(age: Int) {
 		dataStore.writeIntValueOf(KEY_USER_AGE, age)
 	}
