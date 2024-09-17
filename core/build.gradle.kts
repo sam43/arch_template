@@ -34,12 +34,17 @@ android {
 
 dependencies {
 	implementation(project(":core-db"))
+//	implementation(project(":core-datastore"))
 	
 	// Arch Components
 	implementation(libs.hilt.android)
 	ksp(libs.hilt.compiler)
 	
 	implementation(libs.kotlinx.coroutines.android)
+	
+	// Arch Components
+	implementation(libs.androidx.lifecycle.runtime.compose)
+	implementation(libs.androidx.lifecycle.viewmodel.compose)
 	
 	// Local tests: jUnit, coroutines, Android runner
 	testImplementation(libs.junit)

@@ -1,0 +1,1 @@
+package android.template.core.source.remote
