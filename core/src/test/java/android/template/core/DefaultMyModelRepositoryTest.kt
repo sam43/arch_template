@@ -1,9 +1,9 @@
 package android.template.core
 
 import android.template.core.domain.repository.DefaultMyModelRepository
-import android.template.core.source.remote.sample.IMyModelLocalDataSource
-import android.template.core_db.MyModel
-import android.template.core_db.MyModelDao
+import android.template.core.source.sample.local.IMyModelLocalDataSource
+import android.template.core_db.entity.MyModel
+import android.template.core_db.entity.MyModelDao
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.flow

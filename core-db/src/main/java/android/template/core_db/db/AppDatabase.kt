@@ -1,5 +1,7 @@
-package android.template.core_db
+package android.template.core_db.db
 
+import android.template.core_db.entity.MyModel
+import android.template.core_db.entity.MyModelDao
 import androidx.room.Database
 import androidx.room.RoomDatabase
 

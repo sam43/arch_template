@@ -15,7 +15,7 @@
 
 ### Base:
 
-arch-template-folder
+```arch-template-folder
     |___app (module)
         |___domain 	 
             |___data (optional/ui datamodel)
@@ -41,11 +41,12 @@ arch-template-folder
     |___feature_1 		     
         |___ feature_model... 		     
     |___[Other Feature modules] 
+   ```
 
 
 ### Modularized: 
 
-arch-template-folder	
+```arch-template-folder	
     |___app (module)		     
         |___navigation		     
         |___ui state		     
@@ -77,6 +78,7 @@ arch-template-folder
     |___app_feature_1		     
         |___ feature_model... 		     
     |___[Other Feature modules] 
+   ```
 
 
 ## Usage

@@ -7,8 +7,8 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
-import android.template.core_db.AppDatabase
-import android.template.core_db.MyModelDao
+import android.template.core_db.db.AppDatabase
+import android.template.core_db.entity.MyModelDao
 import javax.inject.Singleton
 
 @Module
