@@ -1,9 +1,9 @@
 package android.template.core.di
 
-import android.template.core.source.remote.sample.IMyModelLocalDataSource
-import android.template.core.source.remote.sample.IMyModelRemoteDataSource
-import android.template.core.source.remote.sample.MyModelLocalDataSource
-import android.template.core.source.remote.sample.MyModelRemoteDataSource
+import android.template.core.source.sample.local.IMyModelLocalDataSource
+import android.template.core.source.sample.local.MyModelLocalDataSource
+import android.template.core.source.sample.remote.IMyModelRemoteDataSource
+import android.template.core.source.sample.remote.MyModelRemoteDataSource
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn

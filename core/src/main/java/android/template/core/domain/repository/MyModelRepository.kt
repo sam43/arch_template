@@ -1,15 +1,8 @@
 package android.template.core.domain.repository
 
-import android.template.core.domain.usecase.CoroutineUseCaseRunner
-import android.template.core.source.remote.sample.IMyModelLocalDataSource
-import android.template.core.source.remote.sample.MyModelLocalDataSource
-import android.template.core.utils.IODispatcher
+import android.template.core.source.sample.local.IMyModelLocalDataSource
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
-import android.template.core_db.MyModel
-import android.template.core_db.MyModelDao
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 interface MyModelRepository {
