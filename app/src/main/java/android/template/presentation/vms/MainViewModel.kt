@@ -1,4 +1,4 @@
-package android.template.ui.vms
+package android.template.presentation.vms
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

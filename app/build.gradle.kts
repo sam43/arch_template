@@ -142,6 +142,22 @@ dependencies {
 	implementation(libs.androidx.compose.ui.tooling.preview)
 	implementation(libs.androidx.compose.material3)
 	
+	// Retrofit2 and Okhttp3
+	implementation(libs.retrofit)
+	implementation(libs.retrofit.converter.moshi)
+	implementation(libs.retrofit.coroutines.adapter)
+	implementation(libs.moshi)
+	ksp(libs.moshi.codegen)
+	
+	val okhttpBom = platform(libs.okhttp.bom)
+	implementation(okhttpBom)
+	implementation(libs.okhttp)
+	implementation(libs.okhttp.logging.interceptor)
+	
+	// Moshi
+	implementation(libs.moshi)
+	implementation(libs.moshi.codegen)
+	
 	// Tooling
 	debugImplementation(libs.androidx.compose.ui.tooling)
 	

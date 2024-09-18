@@ -1,7 +1,7 @@
-package android.template.ui.components.screens
+package android.template.presentation.ui.screens
 
-import android.template.ui.components.utils.Screen
-import android.template.ui.vms.MainViewModel
+import android.template.presentation.ui.utils.Screen
+import android.template.presentation.vms.MainViewModel
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.material3.Text

@@ -1,4 +1,4 @@
-package android.template.ui.components.utils
+package android.template.presentation.ui.utils
 
 import kotlinx.serialization.Serializable
 

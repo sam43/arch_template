@@ -1,10 +1,10 @@
-package android.template.ui
+package android.template.presentation.navigation
 
 import android.template.core_ui.theme.ArchitectureTemplateTheme
-import android.template.ui.components.screens.GreetingView
-import android.template.ui.components.screens.MoreView
-import android.template.ui.components.screens.ProfileView
-import android.template.ui.components.utils.Screen
+import android.template.presentation.ui.screens.GreetingView
+import android.template.presentation.ui.screens.MoreView
+import android.template.presentation.ui.screens.ProfileView
+import android.template.presentation.ui.utils.Screen
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview

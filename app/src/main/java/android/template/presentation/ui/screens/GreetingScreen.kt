@@ -1,7 +1,7 @@
-package android.template.ui.components.screens
+package android.template.presentation.ui.screens
 
-import android.template.ui.components.utils.Screen
-import android.template.ui.vms.MainViewModel
+import android.template.presentation.ui.utils.Screen
+import android.template.presentation.vms.MainViewModel
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -34,6 +34,8 @@ fun GreetingView(name: String, modifier: Modifier = Modifier, navController: Nav
 			Button(onClick = {
 				navController.navigate(Screen.Profile("Rakuten"))
 				// sample of setting user age using viewmodel
+				// VM update might be slower as the navigation executes first and
+				// then setting up the value in the background.
 				scope.launch { mainViewModel.updateUserAgeData(25) }
 			}) {
 				Text(
