@@ -17,6 +17,7 @@ android {
 		targetSdk = libs.versions.targetSdk.get().toInt()
 		versionCode = 1
 		versionName = "1.0"
+		testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 		
 		vectorDrawables {
 			useSupportLibrary = true
@@ -114,7 +115,9 @@ android {
 }
 
 dependencies {
+	implementation(project(":core"))
 	implementation(project(":core-ui"))
+	implementation(project(":core-datastore"))
 	
 	// Core Android dependencies
 	implementation(libs.androidx.core.ktx)

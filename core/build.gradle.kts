@@ -34,7 +34,7 @@ android {
 
 dependencies {
 	implementation(project(":core-db"))
-//	implementation(project(":core-datastore"))
+	implementation(project(":core-datastore"))
 	
 	// Arch Components
 	implementation(libs.hilt.android)
