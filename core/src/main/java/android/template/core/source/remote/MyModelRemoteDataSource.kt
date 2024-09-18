@@ -1,4 +1,4 @@
-package android.template.core.source.sample.remote
+package android.template.core.source.remote
 
 import android.template.core.domain.repository.MyModelRepository
 import android.template.core_db.entity.MyModel
