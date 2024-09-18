@@ -1,8 +1,9 @@
 package android.template.core
 
-import android.template.core.data.DefaultMyModelRepository
-import android.template.core_db.MyModel
-import android.template.core_db.MyModelDao
+import android.template.core.domain.repository.DefaultMyModelRepository
+import android.template.core.source.sample.local.IMyModelLocalDataSource
+import android.template.core_db.entity.MyModel
+import android.template.core_db.entity.MyModelDao
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.flow
@@ -17,12 +18,29 @@ class DefaultMyModelRepositoryTest {
 
     @Test
     fun myModels_newItemSaved_itemIsReturned() = runTest {
-        val repository = DefaultMyModelRepository(FakeMyModelDao())
+        val repository = DefaultMyModelRepository(FakeLocalDataSource())
 
         repository.add("Repository")
 
         assertEquals(repository.myModels.first().size, 1)
     }
+}
+
+private abstract class DataSource
+
+private class FakeLocalDataSource: DataSource(), IMyModelLocalDataSource {
+    override fun getLocalData(): Flow<List<MyModel>> {
+        TODO("Not yet implemented")
+    }
+    
+    override suspend fun insertIntoLocalData(name: String) {
+        TODO("Not yet implemented")
+    }
+    
+}
+
+private class FakeRemoteDataSource: DataSource() {
+
 }
 
 private class FakeMyModelDao : MyModelDao {
