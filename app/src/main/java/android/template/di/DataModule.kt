@@ -1,7 +1,7 @@
 package android.template.di
 
-import android.template.domain.sampleRepo.ISampleInAppRepository
-import android.template.domain.sampleRepo.SampleInAppRepository
+import android.template.domain.sampleRepo.ITopRepository
+import android.template.domain.sampleRepo.TopRepository
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -15,11 +15,17 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-interface SampleRepoModule {
+interface DataModule {
 	
 	@Singleton
 	@Binds
-	fun bindsSampleRepository(
-		myModelRepository: SampleInAppRepository
-	): ISampleInAppRepository
+	fun bindsTopRepository(
+		topRepository: TopRepository
+	): ITopRepository
+	
+	@Singleton
+	@Binds
+	fun bindsTopDataSource(
+		topRepository: TopRepository
+	): ITopRepository
 }

@@ -1,11 +1,11 @@
 package android.template.domain.sampleUseCase
 
-import android.template.domain.sampleRepo.ISampleInAppRepository
+import android.template.domain.sampleRepo.ITopRepository
 import javax.inject.Inject
 
-class MyUseCase @Inject constructor(private val repository: ISampleInAppRepository) {
+class MyUseCase @Inject constructor(private val repository: ITopRepository) {
 	suspend operator fun invoke() {
-		repository.getData()
+		repository.fetchAnimeTop()
 		// ... do your operation
 	}
 }

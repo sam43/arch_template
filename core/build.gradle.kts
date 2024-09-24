@@ -17,7 +17,7 @@ android {
 	
 	buildFeatures {
 		aidl = false
-		buildConfig = false
+		buildConfig = true
 		renderScript = false
 		shaders = false
 	}
@@ -39,12 +39,25 @@ dependencies {
 	// Arch Components
 	implementation(libs.hilt.android)
 	ksp(libs.hilt.compiler)
-	
 	implementation(libs.kotlinx.coroutines.android)
-	
-	// Arch Components
 	implementation(libs.androidx.lifecycle.runtime.compose)
 	implementation(libs.androidx.lifecycle.viewmodel.compose)
+	
+	// Retrofit2 and Okhttp3
+	implementation(libs.retrofit)
+	implementation(libs.retrofit.converter.moshi)
+	implementation(libs.retrofit.coroutines.adapter)
+	implementation(libs.moshi)
+	ksp(libs.moshi.codegen)
+	
+	val okhttpBom = platform(libs.okhttp.bom)
+	implementation(okhttpBom)
+	implementation(libs.okhttp)
+	implementation(libs.okhttp.logging.interceptor)
+	
+	// Moshi
+	implementation(libs.moshi)
+	implementation(libs.moshi.codegen)
 	
 	// Local tests: jUnit, coroutines, Android runner
 	testImplementation(libs.junit)
