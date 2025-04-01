@@ -49,23 +49,34 @@ find . -name "*.bak" -type f -delete
 # Rename files
 echo "Renaming files to $DATAMODEL"
 find ./ -name "*MyModel*.kt" | sed "p;s/MyModel/${DATAMODEL^}/" | tr '\n' '\0' | xargs -0 -n 2 mv
-# module names
+
+# Renaming modules
 if [[ -n $(find ./ -name "*-mymodel") ]]
 then
   echo "Renaming modules to $DATAMODEL"
-  find ./ -name "*-mymodel" -type d  | sed "p;s/mymodel/${DATAMODEL,,}/" |  tr '\n' '\0' | xargs -0 -n 2 mv
+  find ./ -name "*-mymodel" -type d | while read -r dir; do
+    new_dir=$(echo "$dir" | sed "s/mymodel/${DATAMODEL,,}/")
+    mv "$dir" "$new_dir"
+  done
 fi
-# directories
-echo "Renaming directories to $DATAMODEL"
-find ./ -name "mymodel" -type d  | sed "p;s/mymodel/${DATAMODEL,,}/" |  tr '\n' '\0' | xargs -0 -n 2 mv
 
-# Rename app
+# Renaming directories
+echo "Renaming directories to $DATAMODEL"
+find ./ -name "mymodel" -type d | while read -r dir; do
+  new_dir=$(echo "$dir" | sed "s/mymodel/${DATAMODEL,,}/")
+  mv "$dir" "$new_dir"
+done
+
+# Renaming app
 if [[ $APPNAME ]]
 then
-    echo "Renaming app to $APPNAME"
-    find ./ -type f \( -name "App.kt" -or -name "settings.gradle.kts" -or -name "*.xml" \) -exec sed -i.bak "s/App/$APPNAME/g" {} \;
-    find ./ -name "App.kt" | sed "p;s/App/$APPNAME/" | tr '\n' '\0' | xargs -0 -n 2 mv
-    find . -name "*.bak" -type f -delete
+  echo "Renaming app to $APPNAME"
+  find ./ -type f \( -name "App.kt" -or -name "settings.gradle.kts" -or -name "*.xml" \) -exec sed -i.bak "s/App/$APPNAME/g" {} \;
+  find ./ -name "App.kt" | while read -r file; do
+    new_file=$(echo "$file" | sed "s/App/$APPNAME/")
+    mv "$file" "$new_file"
+  done
+  find . -name "*.bak" -type f -delete
 fi
 
 # Remove additional files
